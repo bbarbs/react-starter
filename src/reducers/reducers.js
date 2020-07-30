@@ -1,14 +1,16 @@
+import { DEPOSIT_DONE, WITHDRAW_DONE } from "../actions/actions";
+
 const initialState = {
     balance: 5000
 }
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'DEPOSIT':
+        case DEPOSIT_DONE:
             return Object.assign({}, state, {
                 balance: state.balance + action.payload
               })
-        case 'WITHDRAW':
+        case WITHDRAW_DONE:
             return Object.assign({}, state, {
                 balance: state.balance - action.payload
               })

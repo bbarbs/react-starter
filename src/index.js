@@ -3,9 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import reducer from './reducers/reducers';
 import {Provider} from 'react-redux';
+import createSagaMiddleware from "redux-saga";
+import mySaga from './sagas/sagas'
+
+const sagaMiddleware = createSagaMiddleware();
+
+const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const reducers = combineReducers({
     myReducer: reducer
@@ -13,8 +19,12 @@ const reducers = combineReducers({
 
 const myStore = createStore(
   reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  storeEnhancers(
+    applyMiddleware(sagaMiddleware)
+  )
 );
+
+sagaMiddleware.run(mySaga);
 
 ReactDOM.render(
   <Provider store={myStore}>
