@@ -1,4 +1,4 @@
-import { DEPOSIT_DONE, WITHDRAW_DONE } from "../actions/actions";
+import { DEPOSIT_DONE, WITHDRAW_DONE } from "../actions";
 
 const initialState = {
     balance: 5000

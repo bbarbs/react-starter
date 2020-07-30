@@ -1,5 +1,5 @@
 import { takeEvery, call, put } from "redux-saga/effects";
-import { DEPOSIT_REQUESTED, DEPOSIT_DONE, WITHDRAW_DONE, WITHDRAW_REQUESTED } from "../actions/actions";
+import { DEPOSIT_REQUESTED, DEPOSIT_DONE, WITHDRAW_DONE, WITHDRAW_REQUESTED } from "../actions";
 
 export default function* watcherSaga() {
     yield takeEvery(DEPOSIT_REQUESTED, depositWorkerSaga);

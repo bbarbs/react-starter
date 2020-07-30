@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { deposit, withdraw } from './actions/actions';
+import { deposit, withdraw } from './actions';
 
 function App() {
   const [amount, setAmount] = useState(0);
